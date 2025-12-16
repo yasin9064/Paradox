@@ -9,7 +9,7 @@ export default function Home() {
         <div className="rounded-2xl border border-gray-600 bg-[#181818] shadow-lg relative overflow-hidden min-h-screen">
           {/* Header/Nav */}
           <header className="flex items-center justify-between px-10 py-6 border-b border-gray-700">
-            <div className="text-2xl font-bold text-[#ff8000] tracking-wider">LOGO</div>
+            <div className="text-2xl font-bold text-[#ff8000] tracking-wider">Paradox</div>
             <nav className="hidden md:flex gap-10 text-gray-200 font-medium text-lg">
               <a className="text-[#ff8000]" href="#home">Home</a>
               <a href="#about">About me</a>
@@ -172,7 +172,7 @@ framework. Successfully developed mobile applications that enhance user accessib
           {/* Footer */}
           <footer className="mt-10 px-10 py-8 border-t border-gray-700 text-gray-400 bg-[#181818]">
             <div className="flex flex-col items-center gap-3">
-              <div className="text-orange-500 text-xl font-bold mb-2">LOGO</div>
+              <div className="text-orange-500 text-xl font-bold mb-2">Paradox</div>
               <nav className="flex gap-6 mb-2">
                 <a href="#home">Home</a>
                 <a href="#about">About me</a>
