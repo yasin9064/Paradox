@@ -5,6 +5,7 @@ import Image from "next/image";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [projectFilter, setProjectFilter] = useState<"app" | "web">("app");
 
   return (
     <div className="min-h-screen w-full bg-[#111] font-sans text-white relative overflow-x-hidden">
@@ -121,7 +122,7 @@ export default function Home() {
               {/* Stats */}
               <div className="flex gap-7 text-center mt-6">
                 <div>
-                  <div className="text-[#ff8000] text-2xl font-bold">3+</div>
+                  <div className="text-[#ff8000] text-2xl font-bold">3+ years</div>
                   <div className="text-gray-300">Experiences</div>
                 </div>
                 <div>
@@ -145,23 +146,14 @@ export default function Home() {
           </section>
           {/* About Me Section */}
           <section id="about" className="px-4 sm:px-6 md:px-10 py-10 md:py-14 flex flex-col md:flex-row gap-10 md:gap-12 items-start">
-            {/* Placeholder for About Image */}
-            <div className="flex-1 flex justify-center items-start mb-8 md:mb-0">
-              <div className="w-56 h-64 sm:w-72 sm:h-80 md:w-[300px] md:h-[380px] rounded-full bg-[#1a1a1a] flex items-center justify-center overflow-hidden relative">
-                <Image
-                  src="/images/profile2.jpg"
-                  alt="Profile"
-                  fill
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                />
-              </div>
-            </div>
             {/* About Content */}
             <div className="flex-1">
               <h2 className="text-3xl font-bold text-orange-400 mb-4">About Me</h2>
               <h3 className="font-semibold text-lg mb-2 text-gray-200">Flutter Developer & Prompt Engineer</h3>
-              <p className="text-gray-400 mb-6">Aspiring Software Developer with a focus on software design<br/> and multi-platformapplication development using the Flutter
-framework. Successfully developed mobile applications that enhance user accessibility across platforms.</p>
+              <p className="text-gray-400 mb-6">Aspiring Software Developer with a focus on software design and multi-platform application development using the Flutter
+framework. Successfully developed mobile applications that enhance user accessibility across platforms. Seeking entry-level
+opportunities to contribute to innovative software projects through expertise in front-end development and cross-platform
+technologies.</p>
 
               {/* Skills Row */}
               <div className="flex flex-wrap gap-6 mt-6">
@@ -198,42 +190,76 @@ framework. Successfully developed mobile applications that enhance user accessib
 
           {/* Portfolio Section */}
           <section id="portfolio" className="px-4 sm:px-6 md:px-10 py-10 md:py-16">
-            <div className="flex items-center gap-6 md:gap-8 mb-6 md:mb-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 md:gap-8 mb-6 md:mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-orange-400">Projects</h2>
+              {/* Filter Buttons */}
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setProjectFilter("app")}
+                  className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
+                    projectFilter === "app"
+                      ? "bg-[#ff8000] text-white hover:bg-orange-600"
+                      : "bg-[#222] text-gray-300 border border-gray-600 hover:bg-[#2a2a2a]"
+                  }`}
+                >
+                  App Projects
+                </button>
+                <button
+                  onClick={() => setProjectFilter("web")}
+                  className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
+                    projectFilter === "web"
+                      ? "bg-[#ff8000] text-white hover:bg-orange-600"
+                      : "bg-[#222] text-gray-300 border border-gray-600 hover:bg-[#2a2a2a]"
+                  }`}
+                >
+                  Web Projects
+                </button>
+              </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
-              {/* Project 1 */}
-              <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
-                <div className="w-full flex justify-center mb-3">
-                  <Image src="/images/projects/BMI Calculator Pro.png" alt="BMI Calculator Pro" width={400} height={250} className="rounded-xl object-cover shadow-md" />
-                </div>
-                <div className="font-bold text-xl text-white mb-2">BMI Calculator Pro</div>
-                <a href="https://github.com/yasin9064/BMI_Calculator_Pro" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View on GitHub</a>
-              </div>
-              {/* Project 2 */}
-              <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
-                <div className="w-full flex justify-center mb-3">
-                  <Image src="/images/projects/Todo.png" alt="Todo App" width={500} height={300} className="rounded-xl object-cover shadow-md" />
-                </div>
-                <div className="font-bold text-xl text-white mb-2">Todo App</div>
-                <a href="https://github.com/yasin9064/Todo-App" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View on GitHub</a>
-              </div>
-              {/* Project 3 */}
-              <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
-                <div className="w-full flex justify-center mb-3">
-                  <Image src="/images/projects/Weather App.png" alt="Weather App" width={400} height={250} className="rounded-xl object-cover shadow-md" />
-                </div>
-                <div className="font-bold text-xl text-white mb-2">Weather App</div>
-                <a href="https://github.com/yasin9064/weather_app" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View on GitHub</a>
-              </div>
-              {/* Project 4 */}
-              <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
-                <div className="w-full flex justify-center mb-3">
-                  <Image src="/images/projects/Imagin-AI.png" alt="ImaginAI" width={400} height={250} className="rounded-xl object-cover shadow-md" />
-                </div>
-                <div className="font-bold text-xl text-white mb-2">ImaginAI</div>
-                <a href="https://github.com/yasin9064/imagin_ai" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View on GitHub</a>
-              </div>
+              {projectFilter === "app" ? (
+                <>
+                  {/* App Project 1 */}
+                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
+                    <div className="w-full flex justify-center mb-3">
+                      <Image src="/images/projects/BMI Calculator Pro.png" alt="BMI Calculator Pro" width={400} height={250} className="rounded-xl object-cover shadow-md" />
+                    </div>
+                    <div className="font-bold text-xl text-white mb-2">BMI Calculator Pro</div>
+                    <a href="https://github.com/yasin9064/BMI_Calculator_Pro" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View on GitHub</a>
+                  </div>
+                  {/* App Project 2 */}
+                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
+                    <div className="w-full flex justify-center mb-3">
+                      <Image src="/images/projects/Todo.png" alt="Todo App" width={500} height={300} className="rounded-xl object-cover shadow-md" />
+                    </div>
+                    <div className="font-bold text-xl text-white mb-2">Todo App</div>
+                    <a href="https://github.com/yasin9064/Todo-App" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View on GitHub</a>
+                  </div>
+                  {/* App Project 3 */}
+                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
+                    <div className="w-full flex justify-center mb-3">
+                      <Image src="/images/projects/Weather App.png" alt="Weather App" width={400} height={250} className="rounded-xl object-cover shadow-md" />
+                    </div>
+                    <div className="font-bold text-xl text-white mb-2">Weather App</div>
+                    <a href="https://github.com/yasin9064/weather_app" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View on GitHub</a>
+                  </div>
+                  {/* App Project 4 */}
+                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
+                    <div className="w-full flex justify-center mb-3">
+                      <Image src="/images/projects/Imagin-AI.png" alt="ImaginAI" width={400} height={250} className="rounded-xl object-cover shadow-md" />
+                    </div>
+                    <div className="font-bold text-xl text-white mb-2">ImaginAI</div>
+                    <a href="https://github.com/yasin9064/imagin_ai" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View on GitHub</a>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Web Projects - Add your web projects here */}
+                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-center">
+                    <div className="text-gray-400 text-center">Web projects coming soon...</div>
+                  </div>
+                </>
+              )}
             </div>
           </section>
 
