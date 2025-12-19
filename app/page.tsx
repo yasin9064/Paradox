@@ -254,9 +254,13 @@ technologies.</p>
                 </>
               ) : (
                 <>
-                  {/* Web Projects - Add your web projects here */}
-                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-center">
-                    <div className="text-gray-400 text-center">Web projects coming soon...</div>
+                  {/* Web Project 1 - Tetrasip */}
+                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
+                    <div className="w-full flex justify-center mb-3">
+                      <Image src="/images/web_projects/tetrasip web.png" alt="Tetrasip Web" width={400} height={250} className="rounded-xl object-cover shadow-md" />
+                    </div>
+                    <div className="font-bold text-xl text-white mb-2">Tetrasip Web</div>
+                    <a href="https://github.com/yasin9064/YOUR_REPO_NAME" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View on GitHub</a>
                   </div>
                 </>
               )}
