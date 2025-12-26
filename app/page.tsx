@@ -275,7 +275,7 @@ technologies.</p>
                     <div className="w-full flex justify-center mb-3">
                       <Image src="/images/web_projects/Shehnaz web.png" alt="Dt.Shehnaz" width={400} height={250} className="rounded-xl object-cover shadow-md" />
                     </div>
-                    <div className="font-bold text-xl text-white mb-2">WebCraft Web</div>
+                    <div className="font-bold text-xl text-white mb-2">Dt.Shehnaz</div>
                     <a href="https://shehnaz-dt.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View Website</a>
                   </div>
                 </>
