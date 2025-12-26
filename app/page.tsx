@@ -6,6 +6,26 @@ import Image from "next/image";
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [projectFilter, setProjectFilter] = useState<"app" | "web">("app");
+  const [visibleProjects, setVisibleProjects] = useState(2);
+
+  const projects = {
+    app: [
+      { title: "BMI Calculator Pro", img: "/images/projects/BMI Calculator Pro.png", link: "https://github.com/yasin9064/BMI_Calculator_Pro", w: 400, h: 250 },
+      { title: "Todo App", img: "/images/projects/Todo.png", link: "https://github.com/yasin9064/Todo-App", w: 500, h: 300 },
+      { title: "Weather App", img: "/images/projects/Weather App.png", link: "https://github.com/yasin9064/weather_app", w: 400, h: 250 },
+      { title: "ImaginAI", img: "/images/projects/Imagin-AI.png", link: "https://github.com/yasin9064/imagin_ai", w: 400, h: 250 },
+    ],
+    web: [
+      { title: "Tetrasip Web", img: "/images/web_projects/tetrasip web.png", link: "https://tetrasip.com", w: 400, h: 250 },
+      { title: "WebCraft Web", img: "/images/web_projects/webcraft web.png", link: "https://webcraft-rust.vercel.app/", w: 400, h: 250 },
+      { title: "Dt.Shehnaz", img: "/images/web_projects/Shehnaz web.png", link: "https://shehnaz-dt.vercel.app/", w: 400, h: 250 },
+    ]
+  };
+
+  const handleFilterChange = (filter: "app" | "web") => {
+    setProjectFilter(filter);
+    setVisibleProjects(2);
+  };
 
   return (
     <div className="min-h-screen w-full bg-[#111] font-sans text-white relative overflow-x-hidden">
@@ -195,7 +215,7 @@ technologies.</p>
               {/* Filter Buttons */}
               <div className="flex gap-3">
                 <button
-                  onClick={() => setProjectFilter("app")}
+                  onClick={() => handleFilterChange("app")}
                   className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
                     projectFilter === "app"
                       ? "bg-[#ff8000] text-white hover:bg-orange-600"
@@ -205,7 +225,7 @@ technologies.</p>
                   App Projects
                 </button>
                 <button
-                  onClick={() => setProjectFilter("web")}
+                  onClick={() => handleFilterChange("web")}
                   className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
                     projectFilter === "web"
                       ? "bg-[#ff8000] text-white hover:bg-orange-600"
@@ -217,70 +237,38 @@ technologies.</p>
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
-              {projectFilter === "app" ? (
-                <>
-                  {/* App Project 1 */}
-                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
-                    <div className="w-full flex justify-center mb-3">
-                      <Image src="/images/projects/BMI Calculator Pro.png" alt="BMI Calculator Pro" width={400} height={250} className="rounded-xl object-cover shadow-md" />
-                    </div>
-                    <div className="font-bold text-xl text-white mb-2">BMI Calculator Pro</div>
-                    <a href="https://github.com/yasin9064/BMI_Calculator_Pro" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View on GitHub</a>
+              {projects[projectFilter].slice(0, visibleProjects).map((project, index) => (
+                <div key={index} className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
+                  <div className="w-full flex justify-center mb-3">
+                    <Image src={project.img} alt={project.title} width={project.w} height={project.h} className="rounded-xl object-cover shadow-md" />
                   </div>
-                  {/* App Project 2 */}
-                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
-                    <div className="w-full flex justify-center mb-3">
-                      <Image src="/images/projects/Todo.png" alt="Todo App" width={500} height={300} className="rounded-xl object-cover shadow-md" />
-                    </div>
-                    <div className="font-bold text-xl text-white mb-2">Todo App</div>
-                    <a href="https://github.com/yasin9064/Todo-App" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View on GitHub</a>
-                  </div>
-                  {/* App Project 3 */}
-                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
-                    <div className="w-full flex justify-center mb-3">
-                      <Image src="/images/projects/Weather App.png" alt="Weather App" width={400} height={250} className="rounded-xl object-cover shadow-md" />
-                    </div>
-                    <div className="font-bold text-xl text-white mb-2">Weather App</div>
-                    <a href="https://github.com/yasin9064/weather_app" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View on GitHub</a>
-                  </div>
-                  {/* App Project 4 */}
-                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
-                    <div className="w-full flex justify-center mb-3">
-                      <Image src="/images/projects/Imagin-AI.png" alt="ImaginAI" width={400} height={250} className="rounded-xl object-cover shadow-md" />
-                    </div>
-                    <div className="font-bold text-xl text-white mb-2">ImaginAI</div>
-                    <a href="https://github.com/yasin9064/imagin_ai" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View on GitHub</a>
-                  </div>
-                </>
-              ) : (
-                <>
-                  {/* Web Project 1 - Tetrasip */}
-                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
-                    <div className="w-full flex justify-center mb-3">
-                      <Image src="/images/web_projects/tetrasip web.png" alt="Tetrasip Web" width={400} height={250} className="rounded-xl object-cover shadow-md" />
-                    </div>
-                    <div className="font-bold text-xl text-white mb-2">Tetrasip Web</div>
-                    <a href="https://tetrasip.com" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View Website</a>
-                  </div>
-                  {/* Web Project 2 - WebCraft & Co */}
-                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
-                    <div className="w-full flex justify-center mb-3">
-                      <Image src="/images/web_projects/webcraft web.png" alt="Tetrasip Web" width={400} height={250} className="rounded-xl object-cover shadow-md" />
-                    </div>
-                    <div className="font-bold text-xl text-white mb-2">WebCraft Web</div>
-                    <a href="https://webcraft-rust.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View Website</a>
-                  </div>
-                  {/* Web Project 3 - Shehnaz */}
-                  <div className="bg-[#181818] border border-gray-600 rounded-xl min-h-[260px] p-5 flex flex-col items-center justify-between">
-                    <div className="w-full flex justify-center mb-3">
-                      <Image src="/images/web_projects/Shehnaz web.png" alt="Dt.Shehnaz" width={400} height={250} className="rounded-xl object-cover shadow-md" />
-                    </div>
-                    <div className="font-bold text-xl text-white mb-2">Dt.Shehnaz</div>
-                    <a href="https://shehnaz-dt.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">View Website</a>
-                  </div>
-                </>
-              )}
+                  <div className="font-bold text-xl text-white mb-2">{project.title}</div>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block px-4 py-2 bg-[#ff8000] hover:bg-orange-600 rounded-lg text-white font-semibold transition-colors">
+                    {projectFilter === "app" ? "View on GitHub" : "View Website"}
+                  </a>
+                </div>
+              ))}
             </div>
+            {(visibleProjects < projects[projectFilter].length || visibleProjects > 2) && (
+              <div className="flex justify-center mt-6 gap-4">
+                {visibleProjects < projects[projectFilter].length && (
+                  <button
+                    onClick={() => setVisibleProjects((prev) => prev + 2)}
+                    className="px-6 py-2 bg-[#222] border border-gray-600 text-white rounded-lg hover:bg-[#2a2a2a] transition-colors font-semibold"
+                  >
+                    View More
+                  </button>
+                )}
+                {visibleProjects > 2 && (
+                  <button
+                    onClick={() => setVisibleProjects(2)}
+                    className="px-6 py-2 bg-[#222] border border-gray-600 text-white rounded-lg hover:bg-[#2a2a2a] transition-colors font-semibold"
+                  >
+                    View Less
+                  </button>
+                )}
+              </div>
+            )}
           </section>
 
           {/* Contact Section */}
@@ -321,4 +309,3 @@ technologies.</p>
     </div>
   );
 }
-
